@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { StoreProvider } from "@/lib/store";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
@@ -39,7 +40,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>{children}</TooltipProvider>
+          <StoreProvider>
+            <TooltipProvider>{children}</TooltipProvider>
+          </StoreProvider>
         </ThemeProvider>
       </body>
     </html>
