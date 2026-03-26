@@ -40,7 +40,7 @@ export default function ProjectDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = use(params)
-  const { getProject, getCapturesForProject, getImagesForCapture } = useStore()
+  const { getProject, updateProject, getCapturesForProject, getImagesForCapture } = useStore()
   const [activeCapture, setActiveCapture] = useState<string | null>(null)
 
   const project = getProject(id)
@@ -118,7 +118,12 @@ export default function ProjectDetailPage({
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-0 border-b">
             {/* Map */}
             <div className="relative h-[420px] lg:h-[480px] border-r">
-              <ProjectMap project={project} />
+              <ProjectMap
+                project={project}
+                onBoundarySaved={(geojson) =>
+                  updateProject({ ...project, boundary_geojson: geojson, updated_at: new Date().toISOString() })
+                }
+              />
             </div>
 
             {/* Capture Summary */}

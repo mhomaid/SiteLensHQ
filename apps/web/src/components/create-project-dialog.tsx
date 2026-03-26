@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { useStore } from "@/lib/store"
 import type { Project, ProjectStatus } from "@/types"
 import { Button } from "@/components/ui/button"
@@ -37,6 +38,7 @@ const LOCATION_PRESETS: Record<string, { center: [number, number] }> = {
 
 export function CreateProjectDialog() {
   const { addProject } = useStore()
+  const router = useRouter()
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
@@ -63,6 +65,7 @@ export function CreateProjectDialog() {
     setDescription("")
     setLocation("")
     setStatus("active")
+    router.push(`/projects/${project.id}`)
   }
 
   return (
