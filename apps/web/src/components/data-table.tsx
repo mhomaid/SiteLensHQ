@@ -157,7 +157,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "header",
-    header: "Header",
+    header: "Capture",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />
     },
@@ -165,7 +165,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "type",
-    header: "Section Type",
+    header: "Location",
     cell: ({ row }) => (
       <div className="w-32">
         <Badge variant="outline" className="px-1.5 text-muted-foreground">
@@ -191,7 +191,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "target",
-    header: () => <div className="w-full text-right">Target</div>,
+    header: () => <div className="w-full text-right">Capture Date</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -204,10 +204,10 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         }}
       >
         <Label htmlFor={`${row.original.id}-target`} className="sr-only">
-          Target
+          Capture Date
         </Label>
         <Input
-          className="h-8 w-16 border-transparent bg-transparent text-right shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background dark:bg-transparent dark:hover:bg-input/30 dark:focus-visible:bg-input/30"
+          className="h-8 w-28 border-transparent bg-transparent text-right shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background dark:bg-transparent dark:hover:bg-input/30 dark:focus-visible:bg-input/30"
           defaultValue={row.original.target}
           id={`${row.original.id}-target`}
         />
@@ -216,7 +216,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "limit",
-    header: () => <div className="w-full text-right">Limit</div>,
+    header: () => <div className="w-full text-right">Images</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -229,7 +229,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         }}
       >
         <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
-          Limit
+          Images
         </Label>
         <Input
           className="h-8 w-16 border-transparent bg-transparent text-right shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background dark:bg-transparent dark:hover:bg-input/30 dark:focus-visible:bg-input/30"
@@ -241,7 +241,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "reviewer",
-    header: "Reviewer",
+    header: "Site Lead",
     cell: ({ row }) => {
       const isAssigned = row.original.reviewer !== "Assign reviewer"
       if (isAssigned) {
@@ -250,12 +250,13 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       return (
         <>
           <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
-            Reviewer
+            Site Lead
           </Label>
           <Select
             items={[
-              { label: "Eddie Lake", value: "Eddie Lake" },
-              { label: "Jamik Tashpulatov", value: "Jamik Tashpulatov" },
+              { label: "Khalid Al-Otaibi", value: "Khalid Al-Otaibi" },
+              { label: "Sara Mahmoud", value: "Sara Mahmoud" },
+              { label: "Omar Bin Rashid", value: "Omar Bin Rashid" },
             ]}
           >
             <SelectTrigger
@@ -267,10 +268,9 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             </SelectTrigger>
             <SelectContent align="end">
               <SelectGroup>
-                <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                <SelectItem value="Jamik Tashpulatov">
-                  Jamik Tashpulatov
-                </SelectItem>
+                <SelectItem value="Khalid Al-Otaibi">Khalid Al-Otaibi</SelectItem>
+                <SelectItem value="Sara Mahmoud">Sara Mahmoud</SelectItem>
+                <SelectItem value="Omar Bin Rashid">Omar Bin Rashid</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -688,7 +688,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
         <DrawerHeader className="gap-1">
           <DrawerTitle>{item.header}</DrawerTitle>
           <DrawerDescription>
-            Showing total visitors for the last 6 months
+            Capture details and image activity for this site visit
           </DrawerDescription>
         </DrawerHeader>
         <div className="flex flex-col gap-4 overflow-y-auto px-4 text-sm">

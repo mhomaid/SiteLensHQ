@@ -15,166 +15,96 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+import {
+  LayoutDashboardIcon,
+  FolderKanbanIcon,
+  CameraIcon,
+  MapIcon,
+  FileBarChart2Icon,
+  UsersIcon,
+  Settings2Icon,
+  CircleHelpIcon,
+  SearchIcon,
+  DatabaseIcon,
+  FileChartColumnIcon,
+  ActivityIcon,
+  ScanEyeIcon,
+} from "lucide-react"
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Mohamed Homaid",
+    email: "m@sitelenshq.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
-      icon: (
-        <LayoutDashboardIcon
-        />
-      ),
-    },
-    {
-      title: "Lifecycle",
-      url: "#",
-      icon: (
-        <ListIcon
-        />
-      ),
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: (
-        <ChartBarIcon
-        />
-      ),
+      url: "/dashboard",
+      icon: <LayoutDashboardIcon />,
     },
     {
       title: "Projects",
+      url: "/projects",
+      icon: <FolderKanbanIcon />,
+    },
+    {
+      title: "Captures",
       url: "#",
-      icon: (
-        <FolderIcon
-        />
-      ),
+      icon: <CameraIcon />,
+    },
+    {
+      title: "Map View",
+      url: "#",
+      icon: <MapIcon />,
+    },
+    {
+      title: "Reports",
+      url: "#",
+      icon: <FileBarChart2Icon />,
     },
     {
       title: "Team",
       url: "#",
-      icon: (
-        <UsersIcon
-        />
-      ),
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: (
-        <CameraIcon
-        />
-      ),
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: (
-        <FileTextIcon
-        />
-      ),
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: (
-        <FileTextIcon
-        />
-      ),
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      icon: <UsersIcon />,
     },
   ],
   navSecondary: [
     {
       title: "Settings",
       url: "#",
-      icon: (
-        <Settings2Icon
-        />
-      ),
+      icon: <Settings2Icon />,
     },
     {
       title: "Get Help",
       url: "#",
-      icon: (
-        <CircleHelpIcon
-        />
-      ),
+      icon: <CircleHelpIcon />,
     },
     {
       title: "Search",
       url: "#",
-      icon: (
-        <SearchIcon
-        />
-      ),
+      icon: <SearchIcon />,
     },
   ],
   documents: [
     {
-      name: "Data Library",
+      name: "Site Reports",
       url: "#",
-      icon: (
-        <DatabaseIcon
-        />
-      ),
+      icon: <FileChartColumnIcon />,
     },
     {
-      name: "Reports",
+      name: "Image Library",
       url: "#",
-      icon: (
-        <FileChartColumnIcon
-        />
-      ),
+      icon: <DatabaseIcon />,
     },
     {
-      name: "Word Assistant",
+      name: "Activity Log",
       url: "#",
-      icon: (
-        <FileIcon
-        />
-      ),
+      icon: <ActivityIcon />,
     },
   ],
 }
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
@@ -183,10 +113,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<a href="#" />}
+              render={<a href="/dashboard" />}
             >
-              <CommandIcon className="size-5!" />
-              <span className="text-base font-semibold">Acme Inc.</span>
+              <ScanEyeIcon className="size-5!" />
+              <span className="text-base font-semibold">SiteLensHQ</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
