@@ -8,6 +8,7 @@ export const MOCK_PROJECTS: Project[] = [
       "Major arterial infrastructure works covering 14 km of the northern expansion corridor. Includes earthworks, utility trenching, and access road alignment for Phase 1 handover.",
     location_name: "Riyadh",
     status: "active",
+    cover_image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
     center: [46.7219, 24.8607],
     boundary_geojson: {
       type: "Feature",
@@ -35,6 +36,7 @@ export const MOCK_PROJECTS: Project[] = [
       "Logistics hub and warehousing cluster serving the wider NEOM development. Current scope covers site preparation, perimeter works, and internal road network.",
     location_name: "NEOM",
     status: "active",
+    cover_image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&q=80",
     center: [35.1837, 28.0339],
     boundary_geojson: {
       type: "Feature",
@@ -62,6 +64,7 @@ export const MOCK_PROJECTS: Project[] = [
       "Industrial zone expansion on the western boundary of Jeddah. Scope includes land clearing, drainage works, and foundation preparation for four warehouse blocks.",
     location_name: "Jeddah",
     status: "active",
+    cover_image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
     center: [39.1568, 21.4979],
     boundary_geojson: {
       type: "Feature",
@@ -89,6 +92,7 @@ export const MOCK_PROJECTS: Project[] = [
       "New container terminal and quayside works for the eastern port expansion. Phase 1 covers dredging, sheet pile installation, and crane foundations.",
     location_name: "Dammam",
     status: "on_hold",
+    cover_image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
     center: [50.1773, 26.4312],
     boundary_geojson: {
       type: "Feature",

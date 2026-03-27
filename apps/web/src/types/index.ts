@@ -6,6 +6,7 @@ export interface Project {
   description: string
   location_name: string
   status: ProjectStatus
+  cover_image?: string
   boundary_geojson: GeoJSON.Feature<GeoJSON.Polygon> | null
   center: [number, number] // [lng, lat]
   created_at: string
