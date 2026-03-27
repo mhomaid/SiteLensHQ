@@ -55,22 +55,27 @@ export function ProjectsMapPanel({
 
       mapboxgl.accessToken = token
 
-      // Fit all project centers
-      const lngs = projects.map((p) => p.center[0])
-      const lats = projects.map((p) => p.center[1])
-      const bounds = new mapboxgl.LngLatBounds(
-        [Math.min(...lngs) - 1, Math.min(...lats) - 1],
-        [Math.max(...lngs) + 1, Math.max(...lats) + 1]
-      )
+      // Default center (Saudi Arabia) used when there are no projects yet
+      const SADefaults = { center: [45.0, 24.0] as [number, number], zoom: 5 }
 
       const map = new mapboxgl.Map({
         container: containerRef.current!,
         style: "mapbox://styles/mapbox/light-v11",
+        center: SADefaults.center,
+        zoom: SADefaults.zoom,
         attributionControl: false,
-        fitBoundsOptions: { padding: 60 },
       })
 
-      map.fitBounds(bounds, { padding: 60, animate: false })
+      // Fit to project markers once we have locations
+      if (projects.length > 0) {
+        const lngs = projects.map((p) => p.center[0])
+        const lats = projects.map((p) => p.center[1])
+        const bounds = new mapboxgl.LngLatBounds(
+          [Math.min(...lngs) - 1, Math.max(-89, Math.min(...lats) - 1)],
+          [Math.max(...lngs) + 1, Math.min(89, Math.max(...lats) + 1)]
+        )
+        map.fitBounds(bounds, { padding: 60, animate: false })
+      }
       map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-right")
 
       map.on("load", () => {
